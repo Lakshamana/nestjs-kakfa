@@ -1,11 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator'
+import { PickType } from '@nestjs/mapped-types';
+import { UpdateMessageInput } from './update-message.input';
 
-export class MessageInput {
-  @IsString()
-  @IsNotEmpty()
-  message: string
-
-  @IsNumber()
-  @IsNotEmpty()
-  index: number
-}
+export class MessageInput extends PickType(UpdateMessageInput, ['message']) {}
