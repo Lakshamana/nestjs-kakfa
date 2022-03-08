@@ -13,7 +13,6 @@ import { MessageService } from './message.service'
 import { MessageInput } from './input/message.input'
 import { UpdateMessageInput } from './input/update-message.input'
 import { MessagePattern, Payload } from '@nestjs/microservices'
-import { Observable } from 'rxjs'
 
 @Controller()
 export class AppController {
@@ -41,7 +40,7 @@ export class AppController {
   }
 
   @MessagePattern('message')
-  subscribeToMessageEvents(@Payload() message: any): Observable<MessageEvent> {
+  subscribeToMessageEvents(@Payload() message: any): MessageEvent {
     return message.value
   }
 }
